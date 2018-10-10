@@ -38,8 +38,7 @@ class directIP{
             int tempIP = 0;
             for (int x = 0; x < searchedIP.length(); x++){
                 char digit = searchedIP.charAt(x);
-                if (digit != '.')
-                    tempIP = tempIP * 10 + (digit - '0');
+                if (digit != '.') tempIP = tempIP * 10 + (digit - '0');
                 else{
                     fullAddress = (fullAddress << 8) | tempIP;
                     tempIP = 0;
@@ -47,9 +46,8 @@ class directIP{
             }
             fullAddress = (fullAddress << 8) | tempIP;
 
-            for (int x = 0; x < 32; x++, fullAddress <<= 1) {
+            for (int x = 0; x < 32; x++, fullAddress <<= 1)
                 binaryIP[x] = ((fullAddress & 0x80000000) != 0) ? '1' : '0';
-            }
         }
 
         String findRoute() {
@@ -60,8 +58,7 @@ class directIP{
             // binary AND
             char[] tempResult = new char[32];
             for(int place = 0; place < 32; place++){
-                if(binaryIP[place] == '1' && bitSelect[place] == '1')
-                    tempResult[place] = '1';
+                if(binaryIP[place] == '1' && bitSelect[place] == '1') tempResult[place] = '1';
                 else tempResult[place] = '0';
             }
             binaryAndResult = String.copyValueOf(tempResult);
@@ -90,4 +87,3 @@ class directIP{
             return binaryAndResult;
         }
 }
-
